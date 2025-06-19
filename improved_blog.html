@@ -1,0 +1,1420 @@
+        footer {
+            background: linear-gradient(135deg, var(--darkest-magenta) 0%, var(--deeper-magenta) 50%, var(--dark-gray) 100%);
+            color: var(--<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anime & Gaming Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --magenta: #88086e;
+            --dark-magenta: #5a0548;
+            --white: #a11f60;
+            --black: #181818;
+            --pure-black: #000000;
+            --accent-gold: #ffb300;
+            --accent-cyan: #00ffff;
+            --neon-white: #ffffff;
+            --success: #00ff88;
+            --danger: #ff4444;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: 
+                linear-gradient(135deg, var(--black) 0%, var(--magenta) 30%, var(--black) 60%, var(--magenta) 100%),
+                radial-gradient(circle at 20% 30%, var(--magenta) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, var(--black) 0%, transparent 60%);
+            background-attachment: fixed;
+            color: var(--white);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.6;
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 3px var(--black);
+        }
+        
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                url('https://www.transparenttextures.com/patterns/pixel-weave.png'),
+                radial-gradient(circle at 25% 25%, rgba(136, 8, 110, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 75% 75%, rgba(24, 24, 24, 0.8) 0%, transparent 50%),
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="2" height="2" x="10" y="10" fill="%23ffb300" opacity="0.4"/><rect width="1" height="1" x="30" y="30" fill="%2300ffff" opacity="0.3"/><rect width="2" height="2" x="60" y="60" fill="%23a11f60" opacity="0.5"/><rect width="1" height="1" x="80" y="20" fill="%23ffffff" opacity="0.2"/></svg>');
+            pointer-events: none;
+            z-index: -1;
+            animation: backgroundShimmer 10s ease-in-out infinite;
+        }
+        
+        @keyframes backgroundShimmer {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+        
+        @keyframes backgroundShimmer {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        
+        header {
+            background: var(--black);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--white);
+            box-shadow: 
+                0 4px 20px rgba(0,0,0,0.8),
+                0 0 30px rgba(136, 8, 110, 0.5);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: var(--white);
+            text-shadow: 
+                0 0 10px var(--accent-gold),
+                0 0 20px var(--magenta),
+                0 0 30px var(--accent-cyan);
+            animation: neon-glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes neon-glow {
+            from { 
+                text-shadow: 
+                    0 0 10px var(--accent-gold),
+                    0 0 20px var(--magenta),
+                    0 0 30px var(--accent-cyan);
+            }
+            to { 
+                text-shadow: 
+                    0 0 20px var(--accent-gold),
+                    0 0 40px var(--magenta),
+                    0 0 50px var(--accent-cyan);
+            }
+        }
+        
+        nav {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        nav a {
+            color: var(--magenta);
+            background: var(--white);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border: 2px solid var(--magenta);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 
+                0 4px 15px rgba(136, 8, 110, 0.4),
+                0 0 10px rgba(161, 31, 96, 0.3);
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 2px var(--black),
+                inset 0 0 0 transparent;
+            -webkit-text-stroke: 1px var(--black);
+        }
+        
+        nav a:hover {
+            background: var(--magenta);
+            color: var(--neon-white);
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 25px rgba(136, 8, 110, 0.6),
+                0 0 20px var(--accent-gold);
+            border-color: var(--accent-gold);
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 4px var(--black),
+                0 0 8px var(--accent-gold);
+            -webkit-text-stroke: 1px var(--black);
+        }
+        
+        nav a.active {
+            background: var(--magenta);
+            color: var(--neon-white);
+            font-weight: 700;
+            box-shadow: 
+                0 6px 25px rgba(136, 8, 110, 0.7),
+                0 0 20px var(--accent-cyan);
+            border-color: var(--accent-cyan);
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 4px var(--black),
+                0 0 8px var(--accent-cyan);
+            -webkit-text-stroke: 1px var(--black);
+        }
+        
+        main {
+            flex: 1;
+            padding: 2rem;
+        }
+        
+        .page-container {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .page-container.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Home Page Styles */
+        .home-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr;
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .card {
+            background: var(--black);
+            border: 2px solid var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 
+                0 8px 32px rgba(0,0,0,0.6),
+                0 0 20px rgba(161, 31, 96, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, 
+                var(--accent-gold), 
+                var(--magenta), 
+                var(--white), 
+                var(--accent-cyan), 
+                var(--magenta)
+            );
+            border-radius: 22px;
+            z-index: -1;
+            opacity: 0.8;
+            animation: borderRotate 4s linear infinite;
+        }
+        
+        @keyframes borderRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        .card h2 {
+            margin-top: 0;
+            color: var(--magenta);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--white);
+            padding-bottom: 0.5rem;
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 4px var(--black),
+                0 0 8px var(--accent-gold);
+        }
+        
+        .current-post {
+            grid-column: 2;
+        }
+        
+        .archive-sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .archive-sidebar li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .archive-sidebar a {
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.5rem 0.8rem;
+            display: block;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 2px var(--black);
+        }
+        
+        .archive-sidebar a:hover {
+            background: var(--magenta);
+            border-left-color: var(--accent-gold);
+            transform: translateX(5px);
+            box-shadow: 0 0 10px rgba(255, 179, 0, 0.4);
+            color: var(--white);
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 3px var(--black),
+                0 0 6px var(--accent-gold);
+        }
+        
+        .btn {
+            background: var(--magenta);
+            color: var(--neon-white);
+            border: 2px solid var(--white);
+            padding: 0.8rem 1.8rem;
+            border-radius: 15px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 
+                0 4px 15px rgba(136, 8, 110, 0.5),
+                0 0 10px rgba(161, 31, 96, 0.4);
+            position: relative;
+            overflow: hidden;
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 3px var(--black);
+            -webkit-text-stroke: 1px var(--black);
+        }
+        
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 179, 0, 0.3), 
+                transparent
+            );
+            transition: left 0.5s;
+        }
+        
+        .btn:hover::before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 25px rgba(136, 8, 110, 0.7),
+                0 0 20px var(--accent-gold);
+            background: var(--white);
+            color: var(--magenta);
+            border-color: var(--accent-gold);
+            text-shadow: 
+                1px 1px 0 var(--neon-white),
+                -1px -1px 0 var(--neon-white),
+                1px -1px 0 var(--neon-white),
+                -1px 1px 0 var(--neon-white),
+                0 0 3px var(--neon-white),
+                0 0 6px var(--accent-gold);
+            -webkit-text-stroke: 1px var(--neon-white);
+        }
+        
+        .btn:active {
+            transform: translateY(0);
+        }
+        
+        .btn-secondary {
+            background: var(--white);
+            color: var(--magenta);
+            border: 2px solid var(--magenta);
+            box-shadow: 
+                0 4px 15px rgba(161, 31, 96, 0.4),
+                0 0 10px rgba(136, 8, 110, 0.3);
+            text-shadow: 
+                1px 1px 0 var(--neon-white),
+                -1px -1px 0 var(--neon-white),
+                1px -1px 0 var(--neon-white),
+                -1px 1px 0 var(--neon-white),
+                0 0 2px var(--neon-white);
+            -webkit-text-stroke: 1px var(--neon-white);
+        }
+        
+        .btn-secondary:hover {
+            background: var(--magenta);
+            color: var(--neon-white);
+            border-color: var(--accent-cyan);
+            box-shadow: 
+                0 6px 25px rgba(136, 8, 110, 0.6),
+                0 0 20px var(--accent-cyan);
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 3px var(--black),
+                0 0 6px var(--accent-cyan);
+            -webkit-text-stroke: 1px var(--black);
+        }
+        
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        form input, form textarea {
+            background: var(--black);
+            border: 2px solid var(--white);
+            border-radius: 10px;
+            padding: 0.8rem;
+            color: var(--white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            resize: vertical;
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 2px var(--black);
+        }
+        
+        form input:focus, form textarea:focus {
+            outline: none;
+            border-color: var(--magenta);
+            box-shadow: 
+                0 0 15px rgba(136, 8, 110, 0.5),
+                0 0 25px rgba(255, 179, 0, 0.3);
+            background: var(--magenta);
+            color: var(--white);
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 3px var(--black);
+        }
+        
+        form input::placeholder, form textarea::placeholder {
+            color: var(--white);
+            opacity: 0.7;
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black);
+        }
+        
+        form input:focus::placeholder, form textarea:focus::placeholder {
+            color: var(--neon-white);
+            opacity: 0.8;
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 2px var(--black);
+        }
+        
+        form input::placeholder, form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .comment {
+            background: var(--magenta);
+            border: 1px solid var(--white);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 
+                0 4px 15px rgba(0,0,0,0.4),
+                0 0 10px rgba(161, 31, 96, 0.3);
+            color: var(--black);
+        }
+        
+        .comment strong {
+            color: var(--black);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 
+                1px 1px 0 var(--white),
+                -1px -1px 0 var(--white),
+                1px -1px 0 var(--white),
+                -1px 1px 0 var(--white),
+                0 0 3px var(--accent-gold);
+        }
+        
+        .comment {
+            text-shadow: 
+                1px 1px 0 var(--white),
+                -1px -1px 0 var(--white),
+                1px -1px 0 var(--white),
+                -1px 1px 0 var(--white),
+                0 0 2px var(--white);
+        }
+        
+        .comment-list {
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 1rem;
+            scrollbar-width: thin;
+            scrollbar-color: var(--magenta) var(--dark-gray);
+        }
+        
+        .comment-list::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .comment-list::-webkit-scrollbar-track {
+            background: var(--black);
+            border-radius: 4px;
+        }
+        
+        .comment-list::-webkit-scrollbar-thumb {
+            background: var(--magenta);
+            border-radius: 4px;
+        }
+        
+        .comment-list::-webkit-scrollbar-thumb:hover {
+            background: var(--white);
+        }
+        
+        /* Archive Page Styles */
+        .archive-grid {
+            display: grid;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .post-card {
+            background: var(--black);
+            border: 2px solid var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 
+                0 8px 32px rgba(0,0,0,0.6),
+                0 0 20px rgba(161, 31, 96, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 12px 40px rgba(136, 8, 110, 0.6),
+                0 0 30px var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+        
+        .post-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 179, 0, 0.1), 
+                transparent
+            );
+            transition: left 0.5s;
+        }32px rgba(0,0,0,0.4),
+                0 0 20px rgba(90, 5, 72, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 12px 40px rgba(90, 5, 72, 0.5),
+                0 0 30px rgba(196, 30, 58, 0.4);
+        }
+        
+        .post-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(177, 156, 217, 0.15), 
+                transparent
+            );
+            transition: left 0.5s;
+        }
+        
+        .post-card:hover::before {
+            left: 100%;
+        }
+        
+        /* Suggestions Page Styles */
+        .suggestions-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .suggestions-card {
+            background: var(--black);
+            border: 2px solid var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 
+                0 8px 32px rgba(0,0,0,0.6),
+                0 0 25px rgba(161, 31, 96, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .suggestions-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255, 179, 0, 0.05), 
+                rgba(136, 8, 110, 0.08),
+                transparent
+            );
+            animation: shimmer 6s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        footer {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            border-top: 3px solid var(--white);
+            margin-top: 2rem;
+            box-shadow: 
+                0 -4px 20px rgba(0,0,0,0.6),
+                0 0 30px rgba(136, 8, 110, 0.4);
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 3px var(--black);
+        }
+        
+        footer a {
+            color: var(--magenta);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 3px var(--black);
+        }
+        
+        footer a:hover {
+            color: var(--accent-gold);
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 4px var(--black),
+                0 0 8px currentColor;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .home-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .current-post {
+                grid-column: 1;
+                order: 1;
+            }
+            
+            .archive-sidebar {
+                order: 2;
+            }
+            
+            .comments-sidebar {
+                order: 3;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+        }
+        
+        /* Admin Mode - Hidden by default, only visible when enabled */
+        .admin-mode {
+            display: none;
+        }
+        
+        body.admin-enabled .admin-mode {
+            display: inline-block;
+        }
+        
+        /* Admin toggle button - always visible for you */
+        .admin-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--black);
+            color: var(--white);
+            border: 2px solid var(--magenta);
+            padding: 0.5rem;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black);
+            box-shadow: 
+                0 4px 15px rgba(0,0,0,0.5),
+                0 0 10px rgba(136, 8, 110, 0.3);
+        }
+        
+        .admin-toggle:hover {
+            background: var(--magenta);
+            border-color: var(--accent-gold);
+            box-shadow: 
+                0 6px 20px rgba(136, 8, 110, 0.6),
+                0 0 15px var(--accent-gold);
+            transform: scale(1.1);
+        }
+        
+        body.admin-enabled .admin-toggle {
+            background: var(--magenta);
+            border-color: var(--accent-cyan);
+            box-shadow: 
+                0 6px 20px rgba(136, 8, 110, 0.7),
+                0 0 15px var(--accent-cyan);
+        }
+        
+        /* Admin indicator */
+        .admin-indicator {
+            display: none;
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: var(--accent-gold);
+            color: var(--black);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            animation: pulse 2s infinite;
+            text-shadow: none;
+        }
+        
+        body.admin-enabled .admin-indicator {
+            display: block;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--accent-pink);
+            animation: spin 1s ease-in-out infinite;
+            margin-left: 10px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Success/Error Messages */
+        .message {
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            font-weight: 600;
+            text-align: center;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        .message.success {
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2) 0%, rgba(0, 255, 136, 0.1) 100%);
+            border: 2px solid var(--success);
+            color: var(--success);
+        }
+        
+        .message.error {
+            background: linear-gradient(135deg, rgba(255, 68, 68, 0.2) 0%, rgba(255, 68, 68, 0.1) 100%);
+            border: 2px solid var(--danger);
+            color: var(--danger);
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Anime & Gaming Blog</h1>
+        <nav>
+            <a href="#" data-page="home" class="nav-link active">Home</a>
+            <a href="#" data-page="archive" class="nav-link">Archive</a>
+            <a href="#" data-page="suggestions" class="nav-link">Suggestions</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page-container active">
+            <div class="home-grid">
+                <aside class="card archive-sidebar">
+                    <h2>📚 Recent Posts</h2>
+                    <ul id="archive-list">
+                        <li><em>No posts yet. Create your first post!</em></li>
+                    </ul>
+                </aside>
+
+                <section class="card current-post">
+                    <h2 id="current-title">🎮 Welcome to the Blog!</h2>
+                    <article id="current-content">
+                        <p>Welcome to your anime & gaming blog! This is your space to share thoughts on the latest anime series, gaming reviews, character analyses, and anything else that interests you in the otaku world.</p>
+                        <p>Get started by creating your first post using the button below, or browse through existing posts in the archive.</p>
+                    </article>
+                    <button id="new-post-btn" class="btn admin-mode">✨ Create New Post</button>
+                    <form id="new-post-form" class="admin-mode" style="display:none; margin-top:1.5rem;">
+                        <input type="text" id="post-title" placeholder="Enter your post title..." required>
+                        <textarea id="post-content" rows="8" placeholder="Write your blog post here... Share your thoughts on anime, games, or anything else!" required></textarea>
+                        <div style="display: flex; gap: 1rem;">
+                            <button type="submit" class="btn">📝 Publish Post</button>
+                            <button type="button" id="cancel-post" class="btn btn-secondary">❌ Cancel</button>
+                        </div>
+                    </form>
+                </section>
+
+                <aside class="card comments-sidebar">
+                    <h2>💬 Comments</h2>
+                    <div class="comment-list" id="comment-list">
+                        <em>Select a post to view and add comments!</em>
+                    </div>
+                    <form id="comment-form" style="display:none;">
+                        <input type="text" id="comment-name" placeholder="Your name..." required>
+                        <textarea id="comment-text" rows="3" placeholder="Share your thoughts..." required></textarea>
+                        <button type="submit" class="btn">💭 Post Comment</button>
+                    </form>
+                </aside>
+            </div>
+        </div>
+
+        <!-- Archive Page -->
+        <div id="archive" class="page-container">
+            <div class="archive-grid">
+                <h2 style="text-align: center; color: var(--white); font-size: 2rem; margin-bottom: 2rem;">📜 Post Archive</h2>
+                <div id="archive-container">
+                    <!-- Posts will be rendered here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Suggestions Page -->
+        <div id="suggestions" class="page-container">
+            <div class="suggestions-container">
+                <div class="suggestions-card">
+                    <h2 style="color: var(--white); font-size: 2rem; margin-bottom: 1rem;">💡 Suggest a Topic!</h2>
+                    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2rem;">
+                        Have an idea for a post? Want me to review a specific anime or game? Share your suggestions and I'll consider them for future content!
+                    </p>
+                    <form id="suggestion-form">
+                        <input type="text" name="name" placeholder="Your name (optional)" style="margin-bottom: 1rem;">
+                        <textarea name="suggestion" rows="4" placeholder="What would you like to see? (anime reviews, game analysis, character discussions, etc.)" required style="margin-bottom: 1.5rem;"></textarea>
+                        <button type="submit" class="btn">🚀 Send Suggestion</button>
+                    </form>
+                    <div id="suggestion-message"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Admin Toggle Button (Always visible) -->
+    <button class="admin-toggle" id="admin-toggle" title="Toggle Admin Mode">🔑</button>
+    <div class="admin-indicator" id="admin-indicator">Admin Mode</div>
+
+    <footer>
+        <p>&copy; 2024 Anime & Gaming Blog | Made with ❤️ and lots of ☕</p>
+        <p><a href="https://your-resume-website.com" target="_blank">View My Resume</a> | <a href="#" id="clear-data">Clear All Data</a></p>
+    </footer>
+
+    <script>
+        // Enhanced Blog functionality with better UX and Admin Mode
+        class AnimeBlog {
+            constructor() {
+                this.currentPost = null;
+                this.adminMode = false;
+                this.init();
+            }
+
+            init() {
+                this.setupAdminMode();
+                this.setupNavigation();
+                this.setupPostForm();
+                this.setupCommentForm();
+                this.setupSuggestionForm();
+                this.setupDataClear();
+                this.renderArchive();
+                this.showLatestPost();
+                this.showMessage('Welcome to your anime & gaming blog! 🎌', 'success');
+            }
+
+            // Admin Mode Setup
+            setupAdminMode() {
+                const adminToggle = document.getElementById('admin-toggle');
+                
+                adminToggle.addEventListener('click', () => {
+                    this.adminMode = !this.adminMode;
+                    
+                    if (this.adminMode) {
+                        document.body.classList.add('admin-enabled');
+                        this.showMessage('Admin mode enabled! You can now create posts. 🔓', 'success');
+                    } else {
+                        document.body.classList.remove('admin-enabled');
+                        // Hide new post form if it's open
+                        document.getElementById('new-post-form').style.display = 'none';
+                        document.getElementById('new-post-btn').style.display = 'inline-block';
+                        this.showMessage('Admin mode disabled. Posting hidden from visitors. 🔒', 'success');
+                    }
+                });
+
+                // Check for admin mode in localStorage (optional persistence)
+                const savedAdminMode = localStorage.getItem('adminMode');
+                if (savedAdminMode === 'true') {
+                    this.adminMode = true;
+                    document.body.classList.add('admin-enabled');
+                }
+            }
+
+            // Navigation
+            setupNavigation() {
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const page = e.target.dataset.page;
+                        this.showPage(page);
+                        
+                        // Update active nav
+                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                        e.target.classList.add('active');
+                    });
+                });
+            }
+
+            showPage(page) {
+                document.querySelectorAll('.page-container').forEach(container => {
+                    container.classList.remove('active');
+                });
+                document.getElementById(page).classList.add('active');
+                
+                if (page === 'archive') {
+                    this.renderArchiveGrid();
+                }
+            }
+
+            // Post management
+            setupPostForm() {
+                const newPostBtn = document.getElementById('new-post-btn');
+                const newPostForm = document.getElementById('new-post-form');
+                const cancelBtn = document.getElementById('cancel-post');
+
+                newPostBtn.addEventListener('click', () => {
+                    newPostForm.style.display = 'block';
+                    newPostBtn.style.display = 'none';
+                    document.getElementById('post-title').focus();
+                });
+
+                cancelBtn.addEventListener('click', () => {
+                    newPostForm.reset();
+                    newPostForm.style.display = 'none';
+                    newPostBtn.style.display = 'inline-block';
+                });
+
+                newPostForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.createPost();
+                });
+            }
+
+            createPost() {
+                const title = document.getElementById('post-title').value.trim();
+                const content = document.getElementById('post-content').value.trim();
+                
+                if (!title || !content) {
+                    this.showMessage('Please fill in both title and content! 📝', 'error');
+                    return;
+                }
+
+                const posts = this.getPosts();
+                const newPost = {
+                    id: Date.now(),
+                    title,
+                    content,
+                    date: new Date().toLocaleDateString(),
+                    comments: []
+                };
+                
+                posts.push(newPost);
+                this.savePosts(posts);
+                
+                // Reset form and UI
+                document.getElementById('new-post-form').reset();
+                document.getElementById('new-post-form').style.display = 'none';
+                document.getElementById('new-post-btn').style.display = 'inline-block';
+                
+                this.renderArchive();
+                this.showPost(posts.length - 1);
+                this.showMessage('Post published successfully! 🎉', 'success');
+            }
+
+            // Comment system
+            setupCommentForm() {
+                document.getElementById('comment-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.addComment();
+                });
+            }
+
+            addComment() {
+                if (this.currentPost === null) return;
+                
+                const name = document.getElementById('comment-name').value.trim();
+                const text = document.getElementById('comment-text').value.trim();
+                
+                if (!name || !text) {
+                    this.showMessage('Please fill in both name and comment! 💬', 'error');
+                    return;
+                }
+
+                const posts = this.getPosts();
+                const comment = {
+                    id: Date.now(),
+                    name,
+                    text,
+                    date: new Date().toLocaleDateString()
+                };
+                
+                posts[this.currentPost].comments = posts[this.currentPost].comments || [];
+                posts[this.currentPost].comments.push(comment);
+                this.savePosts(posts);
+                
+                document.getElementById('comment-form').reset();
+                this.renderComments();
+                this.showMessage('Comment added! 💭', 'success');
+            }
+
+            // Suggestion system
+            setupSuggestionForm() {
+                document.getElementById('suggestion-form').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.submitSuggestion(e.target);
+                });
+            }
+
+            submitSuggestion(form) {
+                const formData = new FormData(form);
+                const suggestion = formData.get('suggestion').trim();
+                
+                if (!suggestion) {
+                    this.showSuggestionMessage('Please enter a suggestion! 💡', 'error');
+                    return;
+                }
+
+                // Save locally (in real app, you'd send to server)
+                const suggestions = JSON.parse(localStorage.getItem('suggestions') || '[]');
+                suggestions.push({
+                    name: formData.get('name') || 'Anonymous',
+                    suggestion,
+                    date: new Date().toLocaleDateString()
+                });
+                localStorage.setItem('suggestions', JSON.stringify(suggestions));
+                
+                form.reset();
+                this.showSuggestionMessage('Thank you for your suggestion! I\'ll consider it for future posts. 🙏', 'success');
+            }
+
+            // Data management
+            getPosts() {
+                return JSON.parse(localStorage.getItem('animeBlogPosts') || '[]');
+            }
+
+            savePosts(posts) {
+                localStorage.setItem('animeBlogPosts', JSON.stringify(posts));
+            }
+
+            setupDataClear() {
+                document.getElementById('clear-data').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (confirm('Are you sure you want to clear all blog data? This cannot be undone!')) {
+                        localStorage.removeItem('animeBlogPosts');
+                        localStorage.removeItem('suggestions');
+                        location.reload();
+                    }
+                });
+            }
+
+            // Rendering
+            renderArchive() {
+                const posts = this.getPosts();
+                const archiveList = document.getElementById('archive-list');
+                
+                archiveList.innerHTML = '';
+                
+                if (posts.length === 0) {
+                    archiveList.innerHTML = '<li><em>No posts yet. Create your first post!</em></li>';
+                    return;
+                }
+
+                posts.slice().reverse().forEach((post, index) => {
+                    const actualIndex = posts.length - 1 - index;
+                    const li = document.createElement('li');
+                    const a = document.createElement('a');
+                    a.href = '#';
+                    a.textContent = post.title;
+                    a.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.showPost(actualIndex);
+                    });
+                    li.appendChild(a);
+                    archiveList.appendChild(li);
+                });
+            }
+
+            renderArchiveGrid() {
+                const posts = this.getPosts();
+                const container = document.getElementById('archive-container');
+                
+                container.innerHTML = '';
+                
+                if (posts.length === 0) {
+                    container.innerHTML = '<div class="card"><h2>No posts yet</h2><p>Create your first post to get started!</p></div>';
+                    return;
+                }
+
+                posts.slice().reverse().forEach((post, index) => {
+                    const actualIndex = posts.length - 1 - index;
+                    const postCard = document.createElement('div');
+                    postCard.className = 'post-card';
+                    postCard.innerHTML = `
+                        <h2>${post.title}</h2>
+                        <div style="color: rgba(255,255,255,0.7); margin-bottom: 1rem; font-size: 0.9rem;">
+                            📅 ${post.date} | 💬 ${(post.comments || []).length} comments
+                        </div>
+                        <div style="margin-bottom: 1.5rem; line-height: 1.6;">
+                            ${post.content.replace(/\n/g, '<br>').substring(0, 200)}${post.content.length > 200 ? '...' : ''}
+                        </div>
+                        <button class="btn" onclick="blog.showPost(${actualIndex}); blog.showPage('home');">
+                            📖 Read Full Post
+                        </button>
+                        <div style="margin-top: 1.5rem;">
+                            <h3 style="color: var(--accent-pink); margin-bottom: 1rem;">Comments</h3>
+                            <div style="max-height: 200px; overflow-y: auto;">
+                                ${(post.comments || []).map(comment => `
+                                    <div class="comment">
+                                        <strong>${comment.name}:</strong> ${comment.text.replace(/\n/g, '<br>')}
+                                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem;">
+                                            ${comment.date}
+                                        </div>
+                                    </div>
+                                `).join('') || '<em style="color: rgba(255,255,255,0.6);">No comments yet.</em>'}
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(postCard);
+                });
+            }
+
+            showPost(index) {
+                const posts = this.getPosts();
+                if (!posts[index]) return;
+                
+                const post = posts[index];
+                this.currentPost = index;
+                
+                document.getElementById('current-title').textContent = post.title;
+                document.getElementById('current-content').innerHTML = `
+                    <div style="color: rgba(255,255,255,0.7); margin-bottom: 1rem; font-size: 0.9rem;">
+                        📅 ${post.date} | 💬 ${(post.comments || []).length} comments
+                    </div>
+                    <div style="line-height: 1.8;">
+                        ${post.content.replace(/\n/g, '<br>')}
+                    </div>
+                `;
+                
+                this.renderComments();
+            }
+
+            showLatestPost() {
+                const posts = this.getPosts();
+                if (posts.length > 0) {
+                    this.showPost(posts.length - 1);
+                } else {
+                    this.currentPost = null;
+                    this.renderComments();
+                }
+            }
+
+            renderComments() {
+                const commentList = document.getElementById('comment-list');
+                const commentForm = document.getElementById('comment-form');
+                
+                if (this.currentPost === null) {
+                    commentList.innerHTML = '<em style="color: rgba(255,255,255,0.6);">Select a post to view and add comments!</em>';
+                    commentForm.style.display = 'none';
+                    return;
+                }
+
+                commentForm.style.display = 'block';
+                const posts = this.getPosts();
+                const comments = posts[this.currentPost].comments || [];
+                
+                if (comments.length === 0) {
+                    commentList.innerHTML = '<em style="color: rgba(255,255,255,0.6);">No comments yet. Be the first to comment!</em>';
+                    return;
+                }
+
+                commentList.innerHTML = comments.map(comment => `
+                    <div class="comment">
+                        <strong>${comment.name}:</strong> ${comment.text.replace(/\n/g, '<br>')}
+                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem;">
+                            ${comment.date}
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Utility methods
+            showMessage(message, type = 'success') {
+                // Remove existing messages
+                document.querySelectorAll('.message').forEach(msg => msg.remove());
+                
+                const messageDiv = document.createElement('div');
+                messageDiv.className = `message ${type}`;
+                messageDiv.textContent = message;
+                
+                const main = document.querySelector('main');
+                main.insertBefore(messageDiv, main.firstChild);
+                
+                // Auto-remove after 4 seconds
+                setTimeout(() => {
+                    messageDiv.remove();
+                }, 4000);
+            }
+
+            showSuggestionMessage(message, type = 'success') {
+                const messageContainer = document.getElementById('suggestion-message');
+                messageContainer.className = `message ${type}`;
+                messageContainer.textContent = message;
+                
+                // Auto-remove after 5 seconds
+                setTimeout(() => {
+                    messageContainer.textContent = '';
+                    messageContainer.className = '';
+                }, 5000);
+            }
+        }
+
+        // Initialize the blog
+        const blog = new AnimeBlog();
+
+        // Add some sample data for demonstration (remove in production)
+        if (blog.getPosts().length === 0) {
+            const samplePosts = [
+                {
+                    id: 1,
+                    title: "Attack on Titan Final Season Review",
+                    content: "Just finished watching the final season of Attack on Titan and I'm still processing everything! The way they wrapped up Eren's character arc was absolutely incredible. The animation quality in the final episodes was phenomenal, especially during the Rumbling scenes.\n\nWhat did you all think about the ending? I know it's been controversial in the manga community, but I personally loved how it all came together. The themes of freedom, sacrifice, and the cycle of hatred were brilliantly executed.\n\nWITmappa really outdid themselves with this adaptation. Can't wait to see what they work on next!",
+                    date: new Date().toLocaleDateString(),
+                    comments: [
+                        {
+                            id: 1,
+                            name: "Mikasa_Fan",
+                            text: "I agree! The ending was perfect for me. Eren's sacrifice really hit hard 😭",
+                            date: new Date().toLocaleDateString()
+                        },
+                        {
+                            id: 2,
+                            name: "ScoutRegiment",
+                            text: "The animation during the final battle was absolutely insane! MAPPA really delivered.",
+                            date: new Date().toLocaleDateString()
+                        }
+                    ]
+                },
+                {
+                    id: 2,
+                    title: "Elden Ring DLC: Shadow of the Erdtree First Impressions",
+                    content: "Finally got my hands on the new Elden Ring DLC and WOW! FromSoftware has outdone themselves once again. The new areas are absolutely gorgeous and the boss fights are as challenging as ever.\n\nThe new weapons and spells add so much variety to builds. I'm currently running a faith/dex hybrid with the new light greatsword and it feels amazing. The weapon arts are so satisfying!\n\nStill working my way through the main questline but the lore reveals so far have been incredible. Can't wait to dive deeper into the mysteries of the Shadow Lands.",
+                    date: new Date().toLocaleDateString(),
+                    comments: [
+                        {
+                            id: 3,
+                            name: "TarnishedGamer",
+                            text: "The bosses are so hard but so fair! Just beat the Dancing Lion after 20 tries 😅",
+                            date: new Date().toLocaleDateString()
+                        }
+                    ]
+                }
+            ];
+            
+            blog.savePosts(samplePosts);
+            blog.renderArchive();
+            blog.showLatestPost();
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'n':
+                        e.preventDefault();
+                        document.getElementById('new-post-btn').click();
+                        break;
+                    case '1':
+                        e.preventDefault();
+                        blog.showPage('home');
+                        document.querySelector('[data-page="home"]').classList.add('active');
+                        document.querySelectorAll('.nav-link:not([data-page="home"])').forEach(l => l.classList.remove('active'));
+                        break;
+                    case '2':
+                        e.preventDefault();
+                        blog.showPage('archive');
+                        document.querySelector('[data-page="archive"]').classList.add('active');
+                        document.querySelectorAll('.nav-link:not([data-page="archive"])').forEach(l => l.classList.remove('active'));
+                        break;
+                    case '3':
+                        e.preventDefault();
+                        blog.showPage('suggestions');
+                        document.querySelector('[data-page="suggestions"]').classList.add('active');
+                        document.querySelectorAll('.nav-link:not([data-page="suggestions"])').forEach(l => l.classList.remove('active'));
+                        break;
+                }
+            }
+        });
+
+        // Add smooth scrolling for better UX
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Add loading states for form submissions
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', function() {
+                const submitBtn = this.querySelector('button[type="submit"]');
+                const originalText = submitBtn.textContent;
+                submitBtn.innerHTML = originalText + ' <div class="loading"></div>';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
