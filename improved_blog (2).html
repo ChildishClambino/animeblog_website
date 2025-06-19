@@ -879,8 +879,8 @@
                 <section class="card current-post">
                     <h2 id="current-title">🎮 Welcome to the Blog!</h2>
                     <article id="current-content">
-                        <p>Welcome to your anime & gaming blog! This is your space to share thoughts on the latest anime series, gaming reviews, character analyses, and anything else that interests you in the otaku world.</p>
-                        <p>Get started by creating your first post using the button below, or browse through existing posts in the archive.</p>
+                        <p>Welcome to your anime & gaming blog! This is your space to share thoughts on the latest anime series, gaming reviews, character analyses, and anything else that interests you.</p>
+                        <p>Get started by enabling admin mode (click the 🔑 button) and creating your first post!</p>
                     </article>
                     <button id="new-post-btn" class="btn admin-mode">✨ Create New Post</button>
                     <form id="new-post-form" class="admin-mode" style="display:none; margin-top:1.5rem;">
@@ -971,12 +971,23 @@
                 const adminToggle = document.getElementById('admin-toggle');
                 
                 adminToggle.addEventListener('click', () => {
-                    this.adminMode = !this.adminMode;
-                    
-                    if (this.adminMode) {
-                        document.body.classList.add('admin-enabled');
-                        this.showMessage('Admin mode enabled! You can now create posts. 🔓', 'success');
+                    if (!this.adminMode) {
+                        // Prompt for password when enabling admin mode
+                        const password = prompt('🔐 Enter admin password:');
+                        
+                        // Change this password to whatever you want!
+                        const correctPassword = 'anime2024';
+                        
+                        if (password === correctPassword) {
+                            this.adminMode = true;
+                            document.body.classList.add('admin-enabled');
+                            this.showMessage('Admin mode enabled! You can now create posts. 🔓', 'success');
+                        } else if (password !== null) { // null means user clicked cancel
+                            this.showMessage('Incorrect password! Access denied. 🚫', 'error');
+                        }
                     } else {
+                        // Disable admin mode (no password needed)
+                        this.adminMode = false;
                         document.body.classList.remove('admin-enabled');
                         // Hide new post form if it's open
                         document.getElementById('new-post-form').style.display = 'none';
@@ -985,9 +996,10 @@
                     }
                 });
 
-                // Check for admin mode in localStorage (optional persistence)
+                // Optional: Check for admin mode in localStorage (but require password on fresh visits)
                 const savedAdminMode = localStorage.getItem('adminMode');
                 if (savedAdminMode === 'true') {
+                    // Auto-enable admin mode if it was previously enabled in this session
                     this.adminMode = true;
                     document.body.classList.add('admin-enabled');
                 }
@@ -1044,6 +1056,11 @@
             }
 
             createPost() {
+                if (!this.adminMode) {
+                    this.showMessage('Admin mode required to create posts! 🔒', 'error');
+                    return;
+                }
+                
                 const title = document.getElementById('post-title').value.trim();
                 const content = document.getElementById('post-content').value.trim();
                 
@@ -1152,10 +1169,20 @@
             setupDataClear() {
                 document.getElementById('clear-data').addEventListener('click', (e) => {
                     e.preventDefault();
-                    if (confirm('Are you sure you want to clear all blog data? This cannot be undone!')) {
-                        localStorage.removeItem('animeBlogPosts');
-                        localStorage.removeItem('suggestions');
-                        location.reload();
+                    
+                    // Require password for data clearing too
+                    const password = prompt('🔐 Enter admin password to clear all data:');
+                    const correctPassword = 'anime2024';
+                    
+                    if (password === correctPassword) {
+                        if (confirm('Are you sure you want to clear all blog data? This cannot be undone!')) {
+                            localStorage.removeItem('animeBlogPosts');
+                            localStorage.removeItem('suggestions');
+                            localStorage.removeItem('adminMode');
+                            location.reload();
+                        }
+                    } else if (password !== null) {
+                        this.showMessage('Incorrect password! Data clear denied. 🚫', 'error');
                     }
                 });
             }
@@ -1324,57 +1351,21 @@
         // Initialize the blog
         const blog = new AnimeBlog();
 
-        // Add some sample data for demonstration (remove in production)
-        if (blog.getPosts().length === 0) {
-            const samplePosts = [
-                {
-                    id: 1,
-                    title: "Attack on Titan Final Season Review",
-                    content: "Just finished watching the final season of Attack on Titan and I'm still processing everything! The way they wrapped up Eren's character arc was absolutely incredible. The animation quality in the final episodes was phenomenal, especially during the Rumbling scenes.\n\nWhat did you all think about the ending? I know it's been controversial in the manga community, but I personally loved how it all came together. The themes of freedom, sacrifice, and the cycle of hatred were brilliantly executed.\n\nWITmappa really outdid themselves with this adaptation. Can't wait to see what they work on next!",
-                    date: new Date().toLocaleDateString(),
-                    comments: [
-                        {
-                            id: 1,
-                            name: "Mikasa_Fan",
-                            text: "I agree! The ending was perfect for me. Eren's sacrifice really hit hard 😭",
-                            date: new Date().toLocaleDateString()
-                        },
-                        {
-                            id: 2,
-                            name: "ScoutRegiment",
-                            text: "The animation during the final battle was absolutely insane! MAPPA really delivered.",
-                            date: new Date().toLocaleDateString()
-                        }
-                    ]
-                },
-                {
-                    id: 2,
-                    title: "Elden Ring DLC: Shadow of the Erdtree First Impressions",
-                    content: "Finally got my hands on the new Elden Ring DLC and WOW! FromSoftware has outdone themselves once again. The new areas are absolutely gorgeous and the boss fights are as challenging as ever.\n\nThe new weapons and spells add so much variety to builds. I'm currently running a faith/dex hybrid with the new light greatsword and it feels amazing. The weapon arts are so satisfying!\n\nStill working my way through the main questline but the lore reveals so far have been incredible. Can't wait to dive deeper into the mysteries of the Shadow Lands.",
-                    date: new Date().toLocaleDateString(),
-                    comments: [
-                        {
-                            id: 3,
-                            name: "TarnishedGamer",
-                            text: "The bosses are so hard but so fair! Just beat the Dancing Lion after 20 tries 😅",
-                            date: new Date().toLocaleDateString()
-                        }
-                    ]
-                }
-            ];
-            
-            blog.savePosts(samplePosts);
-            blog.renderArchive();
-            blog.showLatestPost();
-        }
-
-        // Add keyboard shortcuts
+        // Add keyboard shortcuts (updated for admin mode)
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey || e.metaKey) {
                 switch(e.key) {
                     case 'n':
                         e.preventDefault();
-                        document.getElementById('new-post-btn').click();
+                        if (blog.adminMode) {
+                            document.getElementById('new-post-btn').click();
+                        } else {
+                            blog.showMessage('Admin mode required! Click the 🔑 button first.', 'error');
+                        }
+                        break;
+                    case 'a':
+                        e.preventDefault();
+                        document.getElementById('admin-toggle').click();
                         break;
                     case '1':
                         e.preventDefault();
