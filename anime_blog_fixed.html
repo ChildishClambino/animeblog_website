@@ -1,6 +1,4 @@
-        footer {
-            background: linear-gradient(135deg, var(--darkest-magenta) 0%, var(--deeper-magenta) 50%, var(--dark-gray) 100%);
-            color: var(--<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,9 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
-            --magenta: #88086e;
-            --dark-magenta: #5a0548;
-            --white: #a11f60;
+            --primary-red: #dc143c;
+            --dark-red: #8b0000;
+            --crimson: #b91c3c;
+            --white: #ffffff;
             --black: #181818;
             --pure-black: #000000;
             --accent-gold: #ffb300;
@@ -28,8 +27,8 @@
             margin: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: 
-                linear-gradient(135deg, var(--black) 0%, var(--magenta) 30%, var(--black) 60%, var(--magenta) 100%),
-                radial-gradient(circle at 20% 30%, var(--magenta) 0%, transparent 50%),
+                linear-gradient(135deg, var(--black) 0%, var(--primary-red) 30%, var(--black) 60%, var(--primary-red) 100%),
+                radial-gradient(circle at 20% 30%, var(--primary-red) 0%, transparent 50%),
                 radial-gradient(circle at 80% 70%, var(--black) 0%, transparent 60%);
             background-attachment: fixed;
             color: var(--white);
@@ -43,6 +42,8 @@
                 1px -1px 0 var(--black),
                 -1px 1px 0 var(--black),
                 0 0 3px var(--black);
+            position: relative;
+            overflow-x: hidden;
         }
         
         body::before {
@@ -54,9 +55,9 @@
             height: 100%;
             background: 
                 url('https://www.transparenttextures.com/patterns/pixel-weave.png'),
-                radial-gradient(circle at 25% 25%, rgba(136, 8, 110, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 25% 25%, rgba(220, 20, 60, 0.3) 0%, transparent 40%),
                 radial-gradient(circle at 75% 75%, rgba(24, 24, 24, 0.8) 0%, transparent 50%),
-                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="2" height="2" x="10" y="10" fill="%23ffb300" opacity="0.4"/><rect width="1" height="1" x="30" y="30" fill="%2300ffff" opacity="0.3"/><rect width="2" height="2" x="60" y="60" fill="%23a11f60" opacity="0.5"/><rect width="1" height="1" x="80" y="20" fill="%23ffffff" opacity="0.2"/></svg>');
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="2" height="2" x="10" y="10" fill="%23ffb300" opacity="0.4"/><rect width="1" height="1" x="30" y="30" fill="%2300ffff" opacity="0.3"/><rect width="2" height="2" x="60" y="60" fill="%23dc143c" opacity="0.5"/><rect width="1" height="1" x="80" y="20" fill="%23ffffff" opacity="0.2"/></svg>');
             pointer-events: none;
             z-index: -1;
             animation: backgroundShimmer 10s ease-in-out infinite;
@@ -67,10 +68,209 @@
             50% { opacity: 1; }
         }
         
-        @keyframes backgroundShimmer {
-            0%, 100% { opacity: 0.8; }
-            50% { opacity: 1; }
+        /* Character Images in Sections */
+        .character-image {
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border-radius: 15px;
+            box-shadow: 
+                0 4px 15px rgba(0,0,0,0.5),
+                0 0 20px rgba(220, 20, 60, 0.3);
+            opacity: 0.8;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-red);
         }
+        
+        .character-image:hover {
+            opacity: 1;
+            transform: scale(1.05);
+            box-shadow: 
+                0 6px 20px rgba(0,0,0,0.6),
+                0 0 25px var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+        
+        /* Main character images in sections */
+        .char-main {
+            width: 120px;
+            height: 160px;
+            margin: 1rem auto;
+        }
+        
+        /* Small decorative characters */
+        .char-small {
+            width: 60px;
+            height: 80px;
+            opacity: 0.6;
+            border-width: 1px;
+            position: absolute;
+        }
+        
+        .char-small:hover {
+            opacity: 0.9;
+            transform: scale(1.1);
+        }
+        
+        /* Medium decorative characters */
+        .char-medium {
+            width: 90px;
+            height: 120px;
+            opacity: 0.7;
+            border-width: 1px;
+            position: absolute;
+        }
+        
+        .char-medium:hover {
+            opacity: 1;
+            transform: scale(1.08);
+        }
+        
+        /* Large decorative characters */
+        .char-large {
+            width: 140px;
+            height: 180px;
+            opacity: 0.5;
+            border-width: 2px;
+            position: absolute;
+        }
+        
+        .char-large:hover {
+            opacity: 0.8;
+            transform: scale(1.03);
+        }
+        
+        /* Decorative character positioning */
+        .char-deco-1 {
+            top: 15%;
+            right: 8%;
+            z-index: 2;
+        }
+        
+        .char-deco-2 {
+            bottom: 25%;
+            left: 5%;
+            z-index: 2;
+        }
+        
+        .char-deco-3 {
+            top: 45%;
+            right: 3%;
+            z-index: 2;
+        }
+        
+        .char-deco-4 {
+            top: 65%;
+            left: 12%;
+            z-index: 2;
+        }
+        
+        .char-deco-5 {
+            top: 30%;
+            left: 8%;
+            z-index: 2;
+        }
+        
+        .char-deco-6 {
+            bottom: 15%;
+            right: 15%;
+            z-index: 2;
+        }
+        
+        .char-deco-7 {
+            top: 20%;
+            left: 15%;
+            z-index: 2;
+        }
+        
+        .char-deco-8 {
+            bottom: 40%;
+            right: 8%;
+            z-index: 2;
+        }
+        
+        /* Floating animation for decorative characters */
+        .char-float-1 {
+            animation: floatSlow 20s ease-in-out infinite;
+        }
+        
+        .char-float-2 {
+            animation: floatMedium 15s ease-in-out infinite reverse;
+        }
+        
+        .char-float-3 {
+            animation: floatFast 12s ease-in-out infinite;
+        }
+        
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-10px) translateX(5px); }
+            50% { transform: translateY(-5px) translateX(-3px); }
+            75% { transform: translateY(-15px) translateX(8px); }
+        }
+        
+        @keyframes floatMedium {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            33% { transform: translateY(-8px) translateX(-4px); }
+            66% { transform: translateY(-12px) translateX(6px); }
+        }
+        
+        @keyframes floatFast {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            50% { transform: translateY(-6px) translateX(3px); }
+        }
+        
+        /* LOCAL CHARACTER IMAGES */
+        .char1 {
+            background-image: url('jujutsu-kaisen-season-2-pv-toji-fushiguro.png');
+            /* Toji Fushiguro character */
+        }
+        
+        .char2 {
+            background-image: url('images/char2.jpg');
+            /* Replace with your gaming character */
+        }
+        
+        .char3 {
+            background-image: url('images/char3.webp');
+            /* Replace with your strong character */
+        }
+        
+        /* Additional decorative character images */
+        .char4 {
+            background-image: url('images/char4.png');
+            /* Add your first decorative character */
+        }
+        
+        .char5 {
+            background-image: url('images/char5.jpg');
+            /* Add your second decorative character */
+        }
+        
+        .char6 {
+            background-image: url('images/char6.png');
+            /* Add your third decorative character */
+        }
+        
+        .char7 {
+            background-image: url('images/char7.jpg');
+            /* Add your fourth decorative character */
+        }
+        
+        .char8 {
+            background-image: url('images/char8.png');
+            /* Add your fifth decorative character */
+        }
+        
+        /* Fallback colors for when images don't load */
+        .char1:not([style*="background-image"]) { background: linear-gradient(135deg, #3b82f6, #1e40af); }
+        .char2:not([style*="background-image"]) { background: linear-gradient(135deg, #ef4444, #dc2626); }
+        .char3:not([style*="background-image"]) { background: linear-gradient(135deg, #f59e0b, #d97706); }
+        .char4:not([style*="background-image"]) { background: linear-gradient(135deg, #4a5568, #2d3748); }
+        .char5:not([style*="background-image"]) { background: linear-gradient(135deg, #553c9a, #44337a); }
+        .char6:not([style*="background-image"]) { background: linear-gradient(135deg, #38a169, #2f855a); }
+        .char7:not([style*="background-image"]) { background: linear-gradient(135deg, #d69e2e, #b7791f); }
+        .char8:not([style*="background-image"]) { background: linear-gradient(135deg, #e53e3e, #c53030); }
         
         header {
             background: var(--black);
@@ -81,7 +281,7 @@
             border-bottom: 3px solid var(--white);
             box-shadow: 
                 0 4px 20px rgba(0,0,0,0.8),
-                0 0 30px rgba(136, 8, 110, 0.5);
+                0 0 30px rgba(220, 20, 60, 0.5);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -95,7 +295,7 @@
             color: var(--white);
             text-shadow: 
                 0 0 10px var(--accent-gold),
-                0 0 20px var(--magenta),
+                0 0 20px var(--primary-red),
                 0 0 30px var(--accent-cyan);
             animation: neon-glow 2s ease-in-out infinite alternate;
         }
@@ -104,13 +304,13 @@
             from { 
                 text-shadow: 
                     0 0 10px var(--accent-gold),
-                    0 0 20px var(--magenta),
+                    0 0 20px var(--primary-red),
                     0 0 30px var(--accent-cyan);
             }
             to { 
                 text-shadow: 
                     0 0 20px var(--accent-gold),
-                    0 0 40px var(--magenta),
+                    0 0 40px var(--primary-red),
                     0 0 50px var(--accent-cyan);
             }
         }
@@ -121,36 +321,35 @@
         }
         
         nav a {
-            color: var(--magenta);
+            color: var(--primary-red);
             background: var(--white);
             padding: 0.8rem 1.5rem;
             border-radius: 25px;
             text-decoration: none;
             font-weight: 600;
             font-size: 0.95rem;
-            border: 2px solid var(--magenta);
+            border: 2px solid var(--primary-red);
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
             box-shadow: 
-                0 4px 15px rgba(136, 8, 110, 0.4),
-                0 0 10px rgba(161, 31, 96, 0.3);
+                0 4px 15px rgba(220, 20, 60, 0.4),
+                0 0 10px rgba(220, 20, 60, 0.3);
             text-shadow: 
                 1px 1px 0 var(--black),
                 -1px -1px 0 var(--black),
                 1px -1px 0 var(--black),
                 -1px 1px 0 var(--black),
-                0 0 2px var(--black),
-                inset 0 0 0 transparent;
+                0 0 2px var(--black);
             -webkit-text-stroke: 1px var(--black);
         }
         
         nav a:hover {
-            background: var(--magenta);
+            background: var(--primary-red);
             color: var(--neon-white);
             transform: translateY(-2px);
             box-shadow: 
-                0 6px 25px rgba(136, 8, 110, 0.6),
+                0 6px 25px rgba(220, 20, 60, 0.6),
                 0 0 20px var(--accent-gold);
             border-color: var(--accent-gold);
             text-shadow: 
@@ -164,11 +363,11 @@
         }
         
         nav a.active {
-            background: var(--magenta);
+            background: var(--primary-red);
             color: var(--neon-white);
             font-weight: 700;
             box-shadow: 
-                0 6px 25px rgba(136, 8, 110, 0.7),
+                0 6px 25px rgba(220, 20, 60, 0.7),
                 0 0 20px var(--accent-cyan);
             border-color: var(--accent-cyan);
             text-shadow: 
@@ -184,6 +383,8 @@
         main {
             flex: 1;
             padding: 2rem;
+            position: relative;
+            z-index: 10;
         }
         
         .page-container {
@@ -200,7 +401,6 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        /* Home Page Styles */
         .home-grid {
             display: grid;
             grid-template-columns: 1fr 2fr 1fr;
@@ -230,10 +430,10 @@
             bottom: -2px;
             background: linear-gradient(45deg, 
                 var(--accent-gold), 
-                var(--magenta), 
+                var(--primary-red), 
                 var(--white), 
                 var(--accent-cyan), 
-                var(--magenta)
+                var(--primary-red)
             );
             border-radius: 22px;
             z-index: -1;
@@ -248,7 +448,7 @@
         
         .card h2 {
             margin-top: 0;
-            color: var(--magenta);
+            color: var(--primary-red);
             font-size: 1.5rem;
             margin-bottom: 1rem;
             border-bottom: 1px solid var(--white);
@@ -293,7 +493,7 @@
         }
         
         .archive-sidebar a:hover {
-            background: var(--magenta);
+            background: var(--primary-red);
             border-left-color: var(--accent-gold);
             transform: translateX(5px);
             box-shadow: 0 0 10px rgba(255, 179, 0, 0.4);
@@ -308,7 +508,7 @@
         }
         
         .btn {
-            background: var(--magenta);
+            background: var(--primary-red);
             color: var(--neon-white);
             border: 2px solid var(--white);
             padding: 0.8rem 1.8rem;
@@ -320,8 +520,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             box-shadow: 
-                0 4px 15px rgba(136, 8, 110, 0.5),
-                0 0 10px rgba(161, 31, 96, 0.4);
+                0 4px 15px rgba(220, 20, 60, 0.5),
+                0 0 10px rgba(220, 20, 60, 0.4);
             position: relative;
             overflow: hidden;
             text-shadow: 
@@ -355,10 +555,10 @@
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 
-                0 6px 25px rgba(136, 8, 110, 0.7),
+                0 6px 25px rgba(220, 20, 60, 0.7),
                 0 0 20px var(--accent-gold);
             background: var(--white);
-            color: var(--magenta);
+            color: var(--primary-red);
             border-color: var(--accent-gold);
             text-shadow: 
                 1px 1px 0 var(--neon-white),
@@ -376,11 +576,11 @@
         
         .btn-secondary {
             background: var(--white);
-            color: var(--magenta);
-            border: 2px solid var(--magenta);
+            color: var(--primary-red);
+            border: 2px solid var(--primary-red);
             box-shadow: 
-                0 4px 15px rgba(161, 31, 96, 0.4),
-                0 0 10px rgba(136, 8, 110, 0.3);
+                0 4px 15px rgba(220, 20, 60, 0.4),
+                0 0 10px rgba(220, 20, 60, 0.3);
             text-shadow: 
                 1px 1px 0 var(--neon-white),
                 -1px -1px 0 var(--neon-white),
@@ -391,11 +591,11 @@
         }
         
         .btn-secondary:hover {
-            background: var(--magenta);
+            background: var(--primary-red);
             color: var(--neon-white);
             border-color: var(--accent-cyan);
             box-shadow: 
-                0 6px 25px rgba(136, 8, 110, 0.6),
+                0 6px 25px rgba(220, 20, 60, 0.6),
                 0 0 20px var(--accent-cyan);
             text-shadow: 
                 1px 1px 0 var(--black),
@@ -432,11 +632,11 @@
         
         form input:focus, form textarea:focus {
             outline: none;
-            border-color: var(--magenta);
+            border-color: var(--primary-red);
             box-shadow: 
-                0 0 15px rgba(136, 8, 110, 0.5),
+                0 0 15px rgba(220, 20, 60, 0.5),
                 0 0 25px rgba(255, 179, 0, 0.3);
-            background: var(--magenta);
+            background: var(--primary-red);
             color: var(--white);
             text-shadow: 
                 1px 1px 0 var(--black),
@@ -467,19 +667,15 @@
                 0 0 2px var(--black);
         }
         
-        form input::placeholder, form textarea::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
         .comment {
-            background: var(--magenta);
+            background: var(--primary-red);
             border: 1px solid var(--white);
             border-radius: 12px;
             padding: 1rem;
             margin-bottom: 1rem;
             box-shadow: 
                 0 4px 15px rgba(0,0,0,0.4),
-                0 0 10px rgba(161, 31, 96, 0.3);
+                0 0 10px rgba(220, 20, 60, 0.3);
             color: var(--black);
         }
         
@@ -510,7 +706,7 @@
             overflow-y: auto;
             margin-bottom: 1rem;
             scrollbar-width: thin;
-            scrollbar-color: var(--magenta) var(--dark-gray);
+            scrollbar-color: var(--magenta) var(--black);
         }
         
         .comment-list::-webkit-scrollbar {
@@ -523,215 +719,12 @@
         }
         
         .comment-list::-webkit-scrollbar-thumb {
-            background: var(--magenta);
+            background: var(--primary-red);
             border-radius: 4px;
         }
         
         .comment-list::-webkit-scrollbar-thumb:hover {
             background: var(--white);
-        }
-        
-        /* Archive Page Styles */
-        .archive-grid {
-            display: grid;
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .post-card {
-            background: var(--black);
-            border: 2px solid var(--white);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 
-                0 8px 32px rgba(0,0,0,0.6),
-                0 0 20px rgba(161, 31, 96, 0.4);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 12px 40px rgba(136, 8, 110, 0.6),
-                0 0 30px var(--accent-gold);
-            border-color: var(--accent-gold);
-        }
-        
-        .post-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(255, 179, 0, 0.1), 
-                transparent
-            );
-            transition: left 0.5s;
-        }32px rgba(0,0,0,0.4),
-                0 0 20px rgba(90, 5, 72, 0.3);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .post-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 12px 40px rgba(90, 5, 72, 0.5),
-                0 0 30px rgba(196, 30, 58, 0.4);
-        }
-        
-        .post-card::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent, 
-                rgba(177, 156, 217, 0.15), 
-                transparent
-            );
-            transition: left 0.5s;
-        }
-        
-        .post-card:hover::before {
-            left: 100%;
-        }
-        
-        /* Suggestions Page Styles */
-        .suggestions-container {
-            max-width: 600px;
-            margin: 0 auto;
-            text-align: center;
-        }
-        
-        .suggestions-card {
-            background: var(--black);
-            border: 2px solid var(--white);
-            border-radius: 20px;
-            padding: 3rem;
-            box-shadow: 
-                0 8px 32px rgba(0,0,0,0.6),
-                0 0 25px rgba(161, 31, 96, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .suggestions-card::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(45deg, 
-                transparent, 
-                rgba(255, 179, 0, 0.05), 
-                rgba(136, 8, 110, 0.08),
-                transparent
-            );
-            animation: shimmer 6s ease-in-out infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
-        footer {
-            background: var(--black);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-            border-top: 3px solid var(--white);
-            margin-top: 2rem;
-            box-shadow: 
-                0 -4px 20px rgba(0,0,0,0.6),
-                0 0 30px rgba(136, 8, 110, 0.4);
-            text-shadow: 
-                1px 1px 0 var(--black),
-                -1px -1px 0 var(--black),
-                1px -1px 0 var(--black),
-                -1px 1px 0 var(--black),
-                0 0 3px var(--black);
-        }
-        
-        footer a {
-            color: var(--magenta);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-shadow: 
-                1px 1px 0 var(--black),
-                -1px -1px 0 var(--black),
-                1px -1px 0 var(--black),
-                -1px 1px 0 var(--black),
-                0 0 3px var(--black);
-        }
-        
-        footer a:hover {
-            color: var(--accent-gold);
-            text-shadow: 
-                1px 1px 0 var(--black),
-                -1px -1px 0 var(--black),
-                1px -1px 0 var(--black),
-                -1px 1px 0 var(--black),
-                0 0 4px var(--black),
-                0 0 8px currentColor;
-        }
-        
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .home-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-            }
-            
-            .current-post {
-                grid-column: 1;
-                order: 1;
-            }
-            
-            .archive-sidebar {
-                order: 2;
-            }
-            
-            .comments-sidebar {
-                order: 3;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-            
-            header h1 {
-                font-size: 1.8rem;
-            }
-            
-            nav {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            main {
-                padding: 1rem;
-            }
-            
-            .card {
-                padding: 1.5rem;
-            }
         }
         
         /* Admin Mode - Hidden by default, only visible when enabled */
@@ -750,7 +743,7 @@
             right: 20px;
             background: var(--black);
             color: var(--white);
-            border: 2px solid var(--magenta);
+            border: 2px solid var(--primary-red);
             padding: 0.5rem;
             border-radius: 50%;
             width: 50px;
@@ -766,23 +759,23 @@
                 -1px 1px 0 var(--black);
             box-shadow: 
                 0 4px 15px rgba(0,0,0,0.5),
-                0 0 10px rgba(136, 8, 110, 0.3);
+                0 0 10px rgba(220, 20, 60, 0.3);
         }
         
         .admin-toggle:hover {
-            background: var(--magenta);
+            background: var(--primary-red);
             border-color: var(--accent-gold);
             box-shadow: 
-                0 6px 20px rgba(136, 8, 110, 0.6),
+                0 6px 20px rgba(220, 20, 60, 0.6),
                 0 0 15px var(--accent-gold);
             transform: scale(1.1);
         }
         
         body.admin-enabled .admin-toggle {
-            background: var(--magenta);
+            background: var(--primary-red);
             border-color: var(--accent-cyan);
             box-shadow: 
-                0 6px 20px rgba(136, 8, 110, 0.7),
+                0 6px 20px rgba(220, 20, 60, 0.7),
                 0 0 15px var(--accent-cyan);
         }
         
@@ -813,18 +806,137 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
         }
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--accent-pink);
-            animation: spin 1s ease-in-out infinite;
-            margin-left: 10px;
+        
+        /* Archive Page Styles */
+        .archive-grid {
+            display: grid;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
+        .post-card {
+            background: var(--black);
+            border: 2px solid var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 
+                0 8px 32px rgba(0,0,0,0.6),
+                0 0 20px rgba(161, 31, 96, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 12px 40px rgba(220, 20, 60, 0.6),
+                0 0 30px var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+        
+        .post-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent, 
+                rgba(255, 179, 0, 0.1), 
+                transparent
+            );
+            transition: left 0.5s;
+        }
+        
+        .post-card:hover::before {
+            left: 100%;
+        }
+        
+        /* Suggestions Page Styles */
+        .suggestions-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .suggestions-card {
+            background: var(--black);
+            border: 2px solid var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 
+                0 8px 32px rgba(0,0,0,0.6),
+                0 0 25px rgba(220, 20, 60, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .suggestions-card::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255, 179, 0, 0.05), 
+                rgba(220, 20, 60, 0.08),
+                transparent
+            );
+            animation: shimmer 6s ease-in-out infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        footer {
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            border-top: 3px solid var(--white);
+            margin-top: 2rem;
+            box-shadow: 
+                0 -4px 20px rgba(0,0,0,0.6),
+                0 0 30px rgba(220, 20, 60, 0.4);
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 3px var(--black);
+            position: relative;
+            z-index: 10;
+        }
+        
+        footer a {
+            color: var(--primary-red);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 3px var(--black);
+        }
+        
+        footer a:hover {
+            color: var(--accent-gold);
+            text-shadow: 
+                1px 1px 0 var(--black),
+                -1px -1px 0 var(--black),
+                1px -1px 0 var(--black),
+                -1px 1px 0 var(--black),
+                0 0 4px var(--black),
+                0 0 8px currentColor;
         }
         
         /* Success/Error Messages */
@@ -853,9 +965,84 @@
             from { transform: translateY(-20px); opacity: 0; }
             to { transform: translateY(0); opacity: 1; }
         }
+        
+        /* Mobile responsive adjustments */
+        @media (max-width: 1024px) {
+            /* Hide some decorative characters on tablets */
+            .char-deco-1, .char-deco-3, .char-deco-5, .char-deco-7 {
+                display: none;
+            }
+            
+            /* Make remaining decorative characters smaller */
+            .char-small { width: 45px; height: 60px; }
+            .char-medium { width: 70px; height: 95px; }
+            .char-large { width: 100px; height: 130px; }
+            
+            .home-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .current-post {
+                grid-column: 1;
+                order: 1;
+            }
+            
+            .archive-sidebar {
+                order: 2;
+            }
+            
+            .comments-sidebar {
+                order: 3;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* Hide most decorative characters on mobile */
+            .char-deco-1, .char-deco-2, .char-deco-3, .char-deco-4, 
+            .char-deco-5, .char-deco-6, .char-deco-7, .char-deco-8 {
+                display: none;
+            }
+            
+            /* Keep only main section characters but make them smaller */
+            .char-main { width: 80px; height: 110px; }
+            
+            header {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+            
+            header h1 {
+                font-size: 1.8rem;
+            }
+            
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            main {
+                padding: 1rem;
+            }
+            
+            .card {
+                padding: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Decorative floating characters -->
+    <div class="character-image char4 char-small char-deco-1 char-float-1"></div>
+    <div class="character-image char5 char-medium char-deco-2 char-float-2"></div>
+    <div class="character-image char6 char-small char-deco-3 char-float-1"></div>
+    <div class="character-image char7 char-large char-deco-4 char-float-3"></div>
+    <div class="character-image char8 char-medium char-deco-5 char-float-2"></div>
+    <div class="character-image char1 char-small char-deco-6 char-float-1"></div>
+    <div class="character-image char2 char-medium char-deco-7 char-float-3"></div>
+    <div class="character-image char3 char-small char-deco-8 char-float-2"></div>
+
     <header>
         <h1>Anime & Gaming Blog</h1>
         <nav>
@@ -867,70 +1054,78 @@
 
     <main>
         <!-- Home Page -->
-        <div id="home" class="page-container active">
+        <div id="home-page" class="page-container active">
             <div class="home-grid">
-                <aside class="card archive-sidebar">
+                <!-- Archive Sidebar -->
+                <div class="card archive-sidebar">
+                    <div class="character-image char1 char-main"></div>
                     <h2>📚 Recent Posts</h2>
                     <ul id="archive-list">
-                        <li><em>No posts yet. Create your first post!</em></li>
+                        <li>No posts yet. Create your first post!</li>
                     </ul>
-                </aside>
+                </div>
 
-                <section class="card current-post">
-                    <h2 id="current-title">🎮 Welcome to the Blog!</h2>
+                <!-- Current Post -->
+                <div class="card current-post">
+                    <h2 id="current-title">🎮 Welcome to Your Blog!</h2>
+                    <button id="new-post-btn" class="btn admin-mode">✨ Create New Post</button>
+                    <form id="new-post-form" class="admin-mode" style="display:none; margin-top:1.5rem;">
+                        <input type="text" id="post-title" placeholder="Post title..." required>
+                        <textarea id="post-content" placeholder="Write your thoughts..." rows="8" required></textarea>
+                        <div style="display: flex; gap: 1rem;">
+                            <button type="submit" class="btn">🚀 Publish Post</button>
+                            <button type="button" id="cancel-post" class="btn-secondary">❌ Cancel</button>
+                        </div>
+                    </form>
                     <article id="current-content">
                         <p>Welcome to your anime & gaming blog! This is your space to share thoughts on the latest anime series, gaming reviews, character analyses, and anything else that interests you.</p>
                         <p>Get started by enabling admin mode (click the 🔑 button) and creating your first post!</p>
                     </article>
-                    <button id="new-post-btn" class="btn admin-mode">✨ Create New Post</button>
-                    <form id="new-post-form" class="admin-mode" style="display:none; margin-top:1.5rem;">
-                        <input type="text" id="post-title" placeholder="Enter your post title..." required>
-                        <textarea id="post-content" rows="8" placeholder="Write your blog post here... Share your thoughts on anime, games, or anything else!" required></textarea>
-                        <div style="display: flex; gap: 1rem;">
-                            <button type="submit" class="btn">📝 Publish Post</button>
-                            <button type="button" id="cancel-post" class="btn btn-secondary">❌ Cancel</button>
-                        </div>
-                    </form>
-                </section>
+                </div>
 
-                <aside class="card comments-sidebar">
-                    <h2>💬 Comments</h2>
-                    <div class="comment-list" id="comment-list">
-                        <em>Select a post to view and add comments!</em>
+                <!-- Comments Sidebar -->
+                <div class="card comments-sidebar">
+                    <div class="character-image char2 char-main"></div>
+                    <h2 id="comments-title">💬 Comments</h2>
+                    <div id="comments-list" class="comment-list">
+                        <p>No comments yet. Be the first to share your thoughts!</p>
                     </div>
-                    <form id="comment-form" style="display:none;">
-                        <input type="text" id="comment-name" placeholder="Your name..." required>
-                        <textarea id="comment-text" rows="3" placeholder="Share your thoughts..." required></textarea>
-                        <button type="submit" class="btn">💭 Post Comment</button>
+                    <form id="comment-form">
+                        <input type="text" id="comment-name" placeholder="Your name (optional)">
+                        <textarea id="comment-text" placeholder="Share your thoughts..." rows="3" required></textarea>
+                        <button type="submit" class="btn">💭 Add Comment</button>
                     </form>
-                </aside>
+                </div>
             </div>
         </div>
 
         <!-- Archive Page -->
-        <div id="archive" class="page-container">
+        <div id="archive-page" class="page-container">
             <div class="archive-grid">
-                <h2 style="text-align: center; color: var(--white); font-size: 2rem; margin-bottom: 2rem;">📜 Post Archive</h2>
-                <div id="archive-container">
-                    <!-- Posts will be rendered here -->
+                <div class="card">
+                    <h2>📖 All Posts</h2>
+                    <div id="all-posts">
+                        <p>No posts available yet. Start writing your first post!</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Suggestions Page -->
-        <div id="suggestions" class="page-container">
+        <div id="suggestions-page" class="page-container">
             <div class="suggestions-container">
                 <div class="suggestions-card">
-                    <h2 style="color: var(--white); font-size: 2rem; margin-bottom: 1rem;">💡 Suggest a Topic!</h2>
-                    <p style="color: rgba(255,255,255,0.8); font-size: 1.1rem; margin-bottom: 2rem;">
-                        Have an idea for a post? Want me to review a specific anime or game? Share your suggestions and I'll consider them for future content!
-                    </p>
+                    <div class="character-image char3 char-main"></div>
+                    <h2>💡 Suggest a Topic</h2>
+                    <p>Have an idea for a blog post? Let me know what you'd like to read about!</p>
                     <form id="suggestion-form">
-                        <input type="text" name="name" placeholder="Your name (optional)" style="margin-bottom: 1rem;">
-                        <textarea name="suggestion" rows="4" placeholder="What would you like to see? (anime reviews, game analysis, character discussions, etc.)" required style="margin-bottom: 1.5rem;"></textarea>
-                        <button type="submit" class="btn">🚀 Send Suggestion</button>
+                        <input type="text" id="suggestion-name" placeholder="Your name (optional)">
+                        <textarea id="suggestion-text" placeholder="What would you like me to write about?" rows="4" required></textarea>
+                        <button type="submit" class="btn">📨 Send Suggestion</button>
                     </form>
-                    <div id="suggestion-message"></div>
+                    <div id="suggestions-list" style="margin-top: 2rem;">
+                        <!-- Suggestions will be displayed here -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -941,12 +1136,12 @@
     <div class="admin-indicator" id="admin-indicator">Admin Mode</div>
 
     <footer>
-        <p>&copy; 2024 Anime & Gaming Blog | Made with ❤️ and lots of ☕</p>
-        <p><a href="https://your-resume-website.com" target="_blank">View My Resume</a> | <a href="#" id="clear-data">Clear All Data</a></p>
+        <p>&copy; 2024 Anime & Gaming Blog. Made with ❤️ for the community.</p>
+        <p><a href="#" id="clear-data">⚠️ Clear All Data</a></p>
     </footer>
 
     <script>
-        // Enhanced Blog functionality with better UX and Admin Mode
+        // Blog functionality
         class AnimeBlog {
             constructor() {
                 this.currentPost = null;
@@ -975,78 +1170,67 @@
                         // Prompt for password when enabling admin mode
                         const password = prompt('🔐 Enter admin password:');
                         
-                        // Change this password to whatever you want!
-                        const correctPassword = 'anime2024';
+                        // TODO: Change this password to your own secret password!
+                        const correctPassword = 'CHANGE_THIS_PASSWORD';
                         
                         if (password === correctPassword) {
                             this.adminMode = true;
                             document.body.classList.add('admin-enabled');
                             this.showMessage('Admin mode enabled! You can now create posts. 🔓', 'success');
-                        } else if (password !== null) { // null means user clicked cancel
+                        } else if (password !== null) {
                             this.showMessage('Incorrect password! Access denied. 🚫', 'error');
                         }
                     } else {
-                        // Disable admin mode (no password needed)
                         this.adminMode = false;
                         document.body.classList.remove('admin-enabled');
-                        // Hide new post form if it's open
                         document.getElementById('new-post-form').style.display = 'none';
                         document.getElementById('new-post-btn').style.display = 'inline-block';
                         this.showMessage('Admin mode disabled. Posting hidden from visitors. 🔒', 'success');
                     }
                 });
-
-                // Optional: Check for admin mode in localStorage (but require password on fresh visits)
-                const savedAdminMode = localStorage.getItem('adminMode');
-                if (savedAdminMode === 'true') {
-                    // Auto-enable admin mode if it was previously enabled in this session
-                    this.adminMode = true;
-                    document.body.classList.add('admin-enabled');
-                }
             }
 
-            // Navigation
             setupNavigation() {
                 document.querySelectorAll('.nav-link').forEach(link => {
                     link.addEventListener('click', (e) => {
                         e.preventDefault();
-                        const page = e.target.dataset.page;
+                        const page = link.dataset.page;
                         this.showPage(page);
                         
-                        // Update active nav
                         document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-                        e.target.classList.add('active');
+                        link.classList.add('active');
                     });
                 });
             }
 
-            showPage(page) {
-                document.querySelectorAll('.page-container').forEach(container => {
-                    container.classList.remove('active');
+            showPage(pageName) {
+                document.querySelectorAll('.page-container').forEach(page => {
+                    page.classList.remove('active');
                 });
-                document.getElementById(page).classList.add('active');
+                document.getElementById(pageName + '-page').classList.add('active');
                 
-                if (page === 'archive') {
-                    this.renderArchiveGrid();
+                if (pageName === 'archive') {
+                    this.renderAllPosts();
+                } else if (pageName === 'suggestions') {
+                    this.renderSuggestions();
                 }
             }
 
-            // Post management
             setupPostForm() {
                 const newPostBtn = document.getElementById('new-post-btn');
                 const newPostForm = document.getElementById('new-post-form');
                 const cancelBtn = document.getElementById('cancel-post');
 
                 newPostBtn.addEventListener('click', () => {
-                    newPostForm.style.display = 'block';
                     newPostBtn.style.display = 'none';
+                    newPostForm.style.display = 'block';
                     document.getElementById('post-title').focus();
                 });
 
                 cancelBtn.addEventListener('click', () => {
-                    newPostForm.reset();
                     newPostForm.style.display = 'none';
                     newPostBtn.style.display = 'inline-block';
+                    newPostForm.reset();
                 });
 
                 newPostForm.addEventListener('submit', (e) => {
@@ -1081,7 +1265,6 @@
                 posts.push(newPost);
                 this.savePosts(posts);
                 
-                // Reset form and UI
                 document.getElementById('new-post-form').reset();
                 document.getElementById('new-post-form').style.display = 'none';
                 document.getElementById('new-post-btn').style.display = 'inline-block';
@@ -1091,7 +1274,6 @@
                 this.showMessage('Post published successfully! 🎉', 'success');
             }
 
-            // Comment system
             setupCommentForm() {
                 document.getElementById('comment-form').addEventListener('submit', (e) => {
                     e.preventDefault();
@@ -1100,13 +1282,16 @@
             }
 
             addComment() {
-                if (this.currentPost === null) return;
-                
-                const name = document.getElementById('comment-name').value.trim();
+                if (this.currentPost === null) {
+                    this.showMessage('Please select a post to comment on! 📝', 'error');
+                    return;
+                }
+
+                const name = document.getElementById('comment-name').value.trim() || 'Anonymous';
                 const text = document.getElementById('comment-text').value.trim();
                 
-                if (!name || !text) {
-                    this.showMessage('Please fill in both name and comment! 💬', 'error');
+                if (!text) {
+                    this.showMessage('Please write a comment! 💭', 'error');
                     return;
                 }
 
@@ -1118,46 +1303,174 @@
                     date: new Date().toLocaleDateString()
                 };
                 
-                posts[this.currentPost].comments = posts[this.currentPost].comments || [];
                 posts[this.currentPost].comments.push(comment);
                 this.savePosts(posts);
                 
                 document.getElementById('comment-form').reset();
                 this.renderComments();
-                this.showMessage('Comment added! 💭', 'success');
+                this.showMessage('Comment added! 💬', 'success');
             }
 
-            // Suggestion system
             setupSuggestionForm() {
                 document.getElementById('suggestion-form').addEventListener('submit', (e) => {
                     e.preventDefault();
-                    this.submitSuggestion(e.target);
+                    this.addSuggestion();
                 });
             }
 
-            submitSuggestion(form) {
-                const formData = new FormData(form);
-                const suggestion = formData.get('suggestion').trim();
+            addSuggestion() {
+                const name = document.getElementById('suggestion-name').value.trim() || 'Anonymous';
+                const text = document.getElementById('suggestion-text').value.trim();
                 
-                if (!suggestion) {
-                    this.showSuggestionMessage('Please enter a suggestion! 💡', 'error');
+                if (!text) {
+                    this.showMessage('Please write a suggestion! 💡', 'error');
                     return;
                 }
 
-                // Save locally (in real app, you'd send to server)
-                const suggestions = JSON.parse(localStorage.getItem('suggestions') || '[]');
-                suggestions.push({
-                    name: formData.get('name') || 'Anonymous',
-                    suggestion,
+                const suggestions = this.getSuggestions();
+                const suggestion = {
+                    id: Date.now(),
+                    name,
+                    text,
                     date: new Date().toLocaleDateString()
-                });
-                localStorage.setItem('suggestions', JSON.stringify(suggestions));
+                };
                 
-                form.reset();
-                this.showSuggestionMessage('Thank you for your suggestion! I\'ll consider it for future posts. 🙏', 'success');
+                suggestions.push(suggestion);
+                this.saveSuggestions(suggestions);
+                
+                document.getElementById('suggestion-form').reset();
+                this.renderSuggestions();
+                this.showMessage('Thank you for your suggestion! 🌟', 'success');
             }
 
-            // Data management
+            showPost(index) {
+                const posts = this.getPosts();
+                if (posts.length === 0 || index >= posts.length) return;
+                
+                this.currentPost = index;
+                const post = posts[index];
+                
+                document.getElementById('current-title').textContent = post.title;
+                document.getElementById('current-content').innerHTML = 
+                    `<small>Posted on ${post.date}</small><br><br>${post.content.replace(/\n/g, '<br>')}`;
+                
+                this.renderComments();
+            }
+
+            showLatestPost() {
+                const posts = this.getPosts();
+                if (posts.length > 0) {
+                    this.showPost(posts.length - 1);
+                } else {
+                    this.currentPost = null;
+                    document.getElementById('current-title').textContent = "🎮 Welcome to Your Blog!";
+                    document.getElementById('current-content').innerHTML = `
+                        <p>Welcome to your anime & gaming blog! This is your space to share thoughts on the latest anime series, gaming reviews, character analyses, and anything else that interests you.</p>
+                        <p>Get started by enabling admin mode (click the 🔑 button) and creating your first post!</p>
+                    `;
+                    document.getElementById('comments-list').innerHTML = '<p>No comments yet. Create your first post to start the conversation!</p>';
+                }
+            }
+
+            renderComments() {
+                if (this.currentPost === null) return;
+                
+                const posts = this.getPosts();
+                const post = posts[this.currentPost];
+                const commentsList = document.getElementById('comments-list');
+                
+                if (post.comments.length === 0) {
+                    commentsList.innerHTML = '<p>No comments yet. Be the first to share your thoughts!</p>';
+                    return;
+                }
+                
+                commentsList.innerHTML = post.comments.map(comment => `
+                    <div class="comment">
+                        <strong>${comment.name}</strong> • <small>${comment.date}</small><br>
+                        ${comment.text}
+                    </div>
+                `).join('');
+            }
+
+            renderArchive() {
+                const posts = this.getPosts();
+                const archiveList = document.getElementById('archive-list');
+                
+                if (posts.length === 0) {
+                    archiveList.innerHTML = '<li>No posts yet. Create your first post!</li>';
+                    return;
+                }
+                
+                archiveList.innerHTML = posts.slice(-5).reverse().map((post, reversedIndex) => {
+                    const actualIndex = posts.length - 1 - reversedIndex;
+                    return `<li><a href="#" data-post="${actualIndex}">${post.title}</a></li>`;
+                }).join('');
+                
+                archiveList.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.showPost(parseInt(link.dataset.post));
+                        this.showPage('home');
+                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                        document.querySelector('[data-page="home"]').classList.add('active');
+                    });
+                });
+            }
+
+            renderAllPosts() {
+                const posts = this.getPosts();
+                const allPostsContainer = document.getElementById('all-posts');
+                
+                if (posts.length === 0) {
+                    allPostsContainer.innerHTML = '<p>No posts available yet. Start writing your first post!</p>';
+                    return;
+                }
+                
+                allPostsContainer.innerHTML = posts.slice().reverse().map((post, reversedIndex) => {
+                    const actualIndex = posts.length - 1 - reversedIndex;
+                    const preview = post.content.length > 200 ? post.content.substring(0, 200) + '...' : post.content;
+                    const commentCount = post.comments.length;
+                    
+                    return `
+                        <div class="post-card">
+                            <h3>${post.title}</h3>
+                            <p><small>Posted on ${post.date} • ${commentCount} comment${commentCount !== 1 ? 's' : ''}</small></p>
+                            <p>${preview.replace(/\n/g, '<br>')}</p>
+                            <button class="btn-secondary" data-post="${actualIndex}">📖 Read Full Post</button>
+                        </div>
+                    `;
+                }).join('');
+                
+                allPostsContainer.querySelectorAll('button').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        this.showPost(parseInt(btn.dataset.post));
+                        this.showPage('home');
+                        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                        document.querySelector('[data-page="home"]').classList.add('active');
+                    });
+                });
+            }
+
+            renderSuggestions() {
+                const suggestions = this.getSuggestions();
+                const suggestionsList = document.getElementById('suggestions-list');
+                
+                if (suggestions.length === 0) {
+                    suggestionsList.innerHTML = '';
+                    return;
+                }
+                
+                suggestionsList.innerHTML = `
+                    <h3>📋 Recent Suggestions</h3>
+                    ${suggestions.slice(-5).reverse().map(suggestion => `
+                        <div class="comment">
+                            <strong>${suggestion.name}</strong> • <small>${suggestion.date}</small><br>
+                            ${suggestion.text}
+                        </div>
+                    `).join('')}
+                `;
+            }
+
             getPosts() {
                 return JSON.parse(localStorage.getItem('animeBlogPosts') || '[]');
             }
@@ -1166,13 +1479,20 @@
                 localStorage.setItem('animeBlogPosts', JSON.stringify(posts));
             }
 
+            getSuggestions() {
+                return JSON.parse(localStorage.getItem('suggestions') || '[]');
+            }
+
+            saveSuggestions(suggestions) {
+                localStorage.setItem('suggestions', JSON.stringify(suggestions));
+            }
+
             setupDataClear() {
                 document.getElementById('clear-data').addEventListener('click', (e) => {
                     e.preventDefault();
                     
-                    // Require password for data clearing too
                     const password = prompt('🔐 Enter admin password to clear all data:');
-                    const correctPassword = 'MySecretBlogPass123!';
+                    const correctPassword = 'CHANGE_THIS_PASSWORD';
                     
                     if (password === correctPassword) {
                         if (confirm('Are you sure you want to clear all blog data? This cannot be undone!')) {
@@ -1187,171 +1507,24 @@
                 });
             }
 
-            // Rendering
-            renderArchive() {
-                const posts = this.getPosts();
-                const archiveList = document.getElementById('archive-list');
+            showMessage(text, type) {
+                const existingMessage = document.querySelector('.message');
+                if (existingMessage) existingMessage.remove();
                 
-                archiveList.innerHTML = '';
+                const message = document.createElement('div');
+                message.className = `message ${type}`;
+                message.textContent = text;
                 
-                if (posts.length === 0) {
-                    archiveList.innerHTML = '<li><em>No posts yet. Create your first post!</em></li>';
-                    return;
-                }
-
-                posts.slice().reverse().forEach((post, index) => {
-                    const actualIndex = posts.length - 1 - index;
-                    const li = document.createElement('li');
-                    const a = document.createElement('a');
-                    a.href = '#';
-                    a.textContent = post.title;
-                    a.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        this.showPost(actualIndex);
-                    });
-                    li.appendChild(a);
-                    archiveList.appendChild(li);
-                });
-            }
-
-            renderArchiveGrid() {
-                const posts = this.getPosts();
-                const container = document.getElementById('archive-container');
+                document.querySelector('main').insertBefore(message, document.querySelector('main').firstChild);
                 
-                container.innerHTML = '';
-                
-                if (posts.length === 0) {
-                    container.innerHTML = '<div class="card"><h2>No posts yet</h2><p>Create your first post to get started!</p></div>';
-                    return;
-                }
-
-                posts.slice().reverse().forEach((post, index) => {
-                    const actualIndex = posts.length - 1 - index;
-                    const postCard = document.createElement('div');
-                    postCard.className = 'post-card';
-                    postCard.innerHTML = `
-                        <h2>${post.title}</h2>
-                        <div style="color: rgba(255,255,255,0.7); margin-bottom: 1rem; font-size: 0.9rem;">
-                            📅 ${post.date} | 💬 ${(post.comments || []).length} comments
-                        </div>
-                        <div style="margin-bottom: 1.5rem; line-height: 1.6;">
-                            ${post.content.replace(/\n/g, '<br>').substring(0, 200)}${post.content.length > 200 ? '...' : ''}
-                        </div>
-                        <button class="btn" onclick="blog.showPost(${actualIndex}); blog.showPage('home');">
-                            📖 Read Full Post
-                        </button>
-                        <div style="margin-top: 1.5rem;">
-                            <h3 style="color: var(--accent-pink); margin-bottom: 1rem;">Comments</h3>
-                            <div style="max-height: 200px; overflow-y: auto;">
-                                ${(post.comments || []).map(comment => `
-                                    <div class="comment">
-                                        <strong>${comment.name}:</strong> ${comment.text.replace(/\n/g, '<br>')}
-                                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem;">
-                                            ${comment.date}
-                                        </div>
-                                    </div>
-                                `).join('') || '<em style="color: rgba(255,255,255,0.6);">No comments yet.</em>'}
-                            </div>
-                        </div>
-                    `;
-                    container.appendChild(postCard);
-                });
-            }
-
-            showPost(index) {
-                const posts = this.getPosts();
-                if (!posts[index]) return;
-                
-                const post = posts[index];
-                this.currentPost = index;
-                
-                document.getElementById('current-title').textContent = post.title;
-                document.getElementById('current-content').innerHTML = `
-                    <div style="color: rgba(255,255,255,0.7); margin-bottom: 1rem; font-size: 0.9rem;">
-                        📅 ${post.date} | 💬 ${(post.comments || []).length} comments
-                    </div>
-                    <div style="line-height: 1.8;">
-                        ${post.content.replace(/\n/g, '<br>')}
-                    </div>
-                `;
-                
-                this.renderComments();
-            }
-
-            showLatestPost() {
-                const posts = this.getPosts();
-                if (posts.length > 0) {
-                    this.showPost(posts.length - 1);
-                } else {
-                    this.currentPost = null;
-                    this.renderComments();
-                }
-            }
-
-            renderComments() {
-                const commentList = document.getElementById('comment-list');
-                const commentForm = document.getElementById('comment-form');
-                
-                if (this.currentPost === null) {
-                    commentList.innerHTML = '<em style="color: rgba(255,255,255,0.6);">Select a post to view and add comments!</em>';
-                    commentForm.style.display = 'none';
-                    return;
-                }
-
-                commentForm.style.display = 'block';
-                const posts = this.getPosts();
-                const comments = posts[this.currentPost].comments || [];
-                
-                if (comments.length === 0) {
-                    commentList.innerHTML = '<em style="color: rgba(255,255,255,0.6);">No comments yet. Be the first to comment!</em>';
-                    return;
-                }
-
-                commentList.innerHTML = comments.map(comment => `
-                    <div class="comment">
-                        <strong>${comment.name}:</strong> ${comment.text.replace(/\n/g, '<br>')}
-                        <div style="font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem;">
-                            ${comment.date}
-                        </div>
-                    </div>
-                `).join('');
-            }
-
-            // Utility methods
-            showMessage(message, type = 'success') {
-                // Remove existing messages
-                document.querySelectorAll('.message').forEach(msg => msg.remove());
-                
-                const messageDiv = document.createElement('div');
-                messageDiv.className = `message ${type}`;
-                messageDiv.textContent = message;
-                
-                const main = document.querySelector('main');
-                main.insertBefore(messageDiv, main.firstChild);
-                
-                // Auto-remove after 4 seconds
-                setTimeout(() => {
-                    messageDiv.remove();
-                }, 4000);
-            }
-
-            showSuggestionMessage(message, type = 'success') {
-                const messageContainer = document.getElementById('suggestion-message');
-                messageContainer.className = `message ${type}`;
-                messageContainer.textContent = message;
-                
-                // Auto-remove after 5 seconds
-                setTimeout(() => {
-                    messageContainer.textContent = '';
-                    messageContainer.className = '';
-                }, 5000);
+                setTimeout(() => message.remove(), 3000);
             }
         }
 
         // Initialize the blog
         const blog = new AnimeBlog();
 
-        // Add keyboard shortcuts (updated for admin mode)
+        // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.ctrlKey || e.metaKey) {
                 switch(e.key) {
@@ -1389,23 +1562,8 @@
             }
         });
 
-        // Add smooth scrolling for better UX
+        // Smooth scrolling
         document.documentElement.style.scrollBehavior = 'smooth';
-
-        // Add loading states for form submissions
-        document.querySelectorAll('form').forEach(form => {
-            form.addEventListener('submit', function() {
-                const submitBtn = this.querySelector('button[type="submit"]');
-                const originalText = submitBtn.textContent;
-                submitBtn.innerHTML = originalText + ' <div class="loading"></div>';
-                submitBtn.disabled = true;
-                
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                }, 1000);
-            });
-        });
     </script>
 </body>
 </html>
